@@ -267,6 +267,9 @@ class GoDingtalkGUI:
         )
         
         if filename:
+            # 规范化路径格式（Windows下将/转换为\\）
+            filename = os.path.normpath(filename)
+            
             # 验证文件是否是可执行文件
             if self.validate_executable_by_type(filename):
                 # 检查平台兼容性
@@ -729,6 +732,9 @@ class GoDingtalkGUI:
             filetypes=[("文本文件", "*.txt"), ("所有文件", "*.*")]
         )
         if filename:
+            # 规范化路径格式（Windows下将/转换为\\）
+            filename = os.path.normpath(filename)
+            
             self.file_entry.delete(0, tk.END)
             self.file_entry.insert(0, filename)
             
@@ -766,6 +772,8 @@ class GoDingtalkGUI:
         """浏览目录"""
         directory = filedialog.askdirectory(title="选择保存目录")
         if directory:
+            # 规范化路径格式（Windows下将/转换为\\）
+            directory = os.path.normpath(directory)
             self.save_dir_var.set(directory)
     
     def browse_cookies_file(self):
@@ -775,6 +783,8 @@ class GoDingtalkGUI:
             filetypes=[("JSON文件", "*.json"), ("所有文件", "*.*")]
         )
         if filename:
+            # 规范化路径格式（Windows下将/转换为\\）
+            filename = os.path.normpath(filename)
             self.cookies_file_var.set(filename)
     
     def browse_video_list_file(self):
@@ -800,6 +810,8 @@ class GoDingtalkGUI:
             filetypes=[("JSON文件", "*.json"), ("所有文件", "*.*")]
         )
         if filename:
+            # 规范化路径格式（Windows下将/转换为\\）
+            filename = os.path.normpath(filename)
             self.config_file_var.set(filename)
     
     def log_message(self, message):
